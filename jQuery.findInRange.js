@@ -16,17 +16,22 @@
 		if ($ele && !($ele instanceof jQuery) && (typeof $ele == 'string' || $ele instanceof HTMLCollection || $ele instanceof Array)) $ele = $($ele);
 		if ($ele) {
 			var first = $ele.find(':first'),
-				last = $ele.find(':last');
+				last = $ele.find(':last'),
+				full = $ele.find('*'),
+				iFirst = 0, iLast = 0;
 			if (!args.length) return $ele.find();
 			if (1 <= args.length) {
 				if ('number' == typeof args[0]) first = $ele.find('*').eq(args[0]);
 				else if ('string' == typeof args[0]) first = $ele.find(args[0]).first();
+				iFirst = function() { for(var i=0;i<full.length;i++) if (full[i] == first.get(0)) return i; }();
 			}
 			if (2 == args.length) {
 				if ('number' == typeof args[1]) last = $ele.find('*').eq(args[1]);
 				else if ('string' == typeof args[1]) last = $ele.find(args[1]).last();
+				iLast = function() { for(var i=0;i<full.length;i++) if (full[i] == last.get(0)) return i; }();
 			}
-			return first.nextUntil(last).andSelf().add(last);
+			
+			return full.map(function(i) { if (i >= 5 && i <= 7) return this; });
 		}
 		throw new Error("Invalid Parent Selector");
 	}
