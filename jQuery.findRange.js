@@ -19,11 +19,11 @@
 				last = $ele.find(':last');
 			if (!args.length) return $ele.find();
 			if (1 <= args.length) {
-				if ('number' == typeof args[0]) first = $ele.find().eq(args[0]);
+				if ('number' == typeof args[0]) first = $ele.find('*').eq(args[0]);
 				else if ('string' == typeof args[0]) first = $ele.find(args[0]).first();
 			}
 			if (2 == args.length) {
-				if ('number' == typeof args[0]) last = $ele.find().eq(args[1]);
+				if ('number' == typeof args[0]) last = $ele.find('*').eq(args[1]);
 				else if ('string' == typeof args[0]) last = $ele.find(args[1]).last();
 			}
 			return first.nextUntil(last).andSelf().add(last);
