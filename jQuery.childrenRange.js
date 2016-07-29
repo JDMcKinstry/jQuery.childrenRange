@@ -23,8 +23,8 @@
 				else if ('string' == typeof args[0]) first = $ele.children(args[0]).first();
 			}
 			if (2 == args.length) {
-				if ('number' == typeof args[0]) last = $ele.children().eq(args[1]);
-				else if ('string' == typeof args[0]) last = $ele.children(args[1]).last();
+				if ('number' == typeof args[1]) last = $ele.children().eq(args[1]);
+				else if ('string' == typeof args[1]) last = $ele.children(args[1]).last();
 			}
 			return first.nextUntil(last).andSelf().add(last);
 		}
