@@ -18,7 +18,7 @@
 			var first = $ele.find(':first'),
 				last = $ele.find(':last'),
 				full = $ele.find('*'),
-				iFirst = 0, iLast = 0;
+				iFirst = 0, iLast = full.length;
 			if (!args.length) return $ele.find();
 			if (1 <= args.length) {
 				if ('number' == typeof args[0]) first = $ele.find('*').eq(args[0]);
@@ -31,7 +31,7 @@
 				iLast = function() { for(var i=0;i<full.length;i++) if (full[i] == last.get(0)) return i; }();
 			}
 			
-			return full.map(function(i) { if (i >= 5 && i <= 7) return this; });
+			return full.map(function(i) { if (i >= iFirst && i <= iLast) return this; });
 		}
 		throw new Error("Invalid Parent Selector");
 	}
